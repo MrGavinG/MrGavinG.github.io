@@ -118,3 +118,63 @@
         <h1 class="logo">DANILYN</h1>
         <label id="output-label" class="output-label"></label>
     </header>
+    
+    <script>
+        function ageCounter() {
+            const birthDate = new Date('2000-12-24'); // Replace with your birthdate (yyyy-mm-dd)
+            const now = new Date();
+
+            const differenceInMilliseconds = now - birthDate;
+            const differenceInSeconds = differenceInMilliseconds / 1000;
+            const differenceInMinutes = differenceInSeconds / 60;
+            const differenceInHours = differenceInMinutes / 60;
+            const differenceInDays = differenceInHours / 24;
+            const differenceInYears = differenceInDays / 365.25;
+
+            const outputLabel = document.getElementById('output-label');
+            outputLabel.textContent = `You are ${differenceInYears
+                    .toFixed(10)} years old.`;
+    }
+
+    function birthdayCountdown() {
+        const birthDate = new Date('2000-12-24'); // Replace with your birthdate (yyyy-mm-dd)
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        const thisYearBirthday = new Date(currentYear, birthDate.getMonth(), birthDate.getDate());
+        let nextBirthday;
+
+        if (now < thisYearBirthday) {
+            nextBirthday = thisYearBirthday;
+        } else {
+            nextBirthday = new Date(currentYear + 1, birthDate.getMonth(), birthDate.getDate());
+        }
+
+        const differenceInMilliseconds = nextBirthday - now;
+        const differenceInSeconds = differenceInMilliseconds / 1000;
+        const differenceInMinutes = differenceInSeconds / 60;
+        const differenceInHours = differenceInMinutes / 60;
+        const differenceInDays = differenceInHours / 24;
+
+        const outputLabel = document.getElementById('output-label');
+        outputLabel.textContent = `Your birthday is in ${Math.ceil(differenceInDays)} days.`;
+    }
+
+    ageCounter();
+    setTimeout(birthdayCountdown, 5000);
+
+    setInterval(() => {
+        ageCounter();
+        setTimeout(birthdayCountdown, 5000);
+    }, 10000);
+    </script>
+
+    <div class="under-construction">Under Construction</div>
+
+    <div class="gallery">
+        <!-- Add your gallery items here -->
+    </div>
+</body>
+
+</html>
+
+    
